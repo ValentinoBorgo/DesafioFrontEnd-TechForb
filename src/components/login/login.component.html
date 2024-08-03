@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="izquierda">
+        <div class="izquierda-inicio">
+            <h1>Iniciar Sesión</h1>
+            <p>Nos alegra tenerte de vuelta y estamos listos para atender tus necesidades. Inicia sesión y continúa aprovechando al máximo nuestra plataforma.</p>
+            <div class="icon">
+                <div>
+                    <div class="izquierda-contenido">
+                    <img src="../../assets/Icon.png" alt="" style="margin-right: 1rem;">
+                    <h4>Monitoreo integral</h4>
+                    </div>
+                    <p style="margin-left: 2.5rem;">Administra, monitorea mutiples plantas de forma centralizada</p>
+                </div>
+                <div class="icon">
+                    <div class="izquierda-contenido">
+                    <img src="../../assets/Icon1.png" alt="" style="margin-right: 1rem;">
+                    <h4>Notificaciones en tiempo real</h4>
+                    </div>
+                    <p style="margin-left: 2.5rem;">Recibi notificaciones en tiempo real sobre las mediciones</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="derecha">
+        <div class="divs">
+            <div *ngIf="!spinner">
+                <h2 class="portal-monitoreo">Portal de Monitoreo</h2>
+                <img class="vacio" src="../../assets/vacio.png">
+                <h5 class="iniciar-sesion">Iniciar Sesión</h5>
+            </div>
+            <div *ngIf="spinner === true">
+                <h2>Cargando...</h2>
+            </div>
+            <mat-spinner *ngIf="spinner === true"></mat-spinner>
+            <form [formGroup]="loginForm" *ngIf="!spinner">
+                <mat-form-field class="tamañoInputs">
+                <label>Email</label>
+                    <input formControlName="nombre" type="email" id="email" name="email" placeholder="Email" required>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="tamañoInputs">
+                <label>Contraseña</label>
+                    <input formControlName="contrasenia" type="password" id="contrasenia" name="contrasenia" placeholder="Contraseña" required>
+                    <button class="shape">
+                        <img src="../../assets/Shape.png">
+                    </button>
+                </mat-form-field>
+                <div *ngIf="msgError">
+                    <p style="color: red;">Email o Contraseña incorrecto, vuelva a intentarlo!</p>
+                </div>
+                <div id="btns">
+                    <button (click)="moveToRegister()" mat-raised-button style="background-color: green; color: white;" class="registrar">Registrarme</button>
+                    <button (click)="login()" style="margin: 1rem;" mat-raised-button color="primary" class="iniciar">Iniciar Sesión</button>
+                    <button (click)="login()" style="margin: 1rem;" mat-raised-button color="primary" class="ingresar">Ingresar</button>
+                </div>
+                <p class="noVerP">¿Olvidaste tu contraseña?</p>
+                <p class="noVerP">Protegido por reCAPTCHA y sujeto a la <a href="">Politica de Privacidad</a> y <a href="">Condiciones</a></p>
+            </form>
+        </div>
+    </div>
+</div>

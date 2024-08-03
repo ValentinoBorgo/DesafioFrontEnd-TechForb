@@ -1,0 +1,52 @@
+.nav{
+    height: 100vh;
+    width: 1px;
+    padding: 15px 30px;
+    overflow-y: auto;
+    position: fixed;
+    left: 0;
+    top: -2rem;
+    bottom: 0;
+    transition: 0.4s;
+    z-index: 99;
+    /* border: 1px black solid; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+img{
+    margin-left: -1rem;
+}
+
+div, h1, nav, ul, li, a{
+    background-color: inherit;
+    margin-top: 30px;
+}
+
+li{
+    transition: 0.3s;
+}
+
+li:hover{
+    transform: scale(1.1);
+    background-color: var(--temaColor);
+}
+
+a{
+    font-size: x-large;
+    font-weight: bolder;
+    color: gray;
+}
+
+a:hover{
+    color: black;
+}
+
+.active{
+    color: black;
+}
+
+.ancorNav:hover{
+    transition: 0.3s;
+    transform: scale(1.1);
+}

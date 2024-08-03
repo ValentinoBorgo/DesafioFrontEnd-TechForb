@@ -1,0 +1,32 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <div style="list-style: none; width: 100%; vertical-align: left;">
+        <li>
+          <img src="../../../assets/logo-icon.png" 
+          alt="usuario.svg">
+          <a>{{ getNombre() }}</a>
+        </li>
+        <br>
+        <br>
+        <li>
+        <a [routerLink]="['/log/dashboard']" routerLinkActive="active" (click)="active('home')" class="ancorNav" ><img src="../../assets/Dashboard.png" alt=""></a>
+        </li>
+        <li>
+        <a [routerLink]="['/log/teams']" routerLinkActive="active" (click)="active('teams')" class="ancorNav"><img src="../../assets/Monitoreo por planta.png" alt=""></a>
+        </li>
+        <li>
+        <a class="ancorNav" [routerLink]="['/log/matches']" routerLinkActive="active" (click)="active('matches')" class="ancorNav"><img src="../../assets/Histórico de sensores.png" alt=""></a>
+        </li>
+        <li>
+        <a [routerLink]="['/log/competition']" routerLinkActive="active" (click)="active('competition')" class="ancorNav" ><img src="../../assets/Histórico de plantas.png" alt=""></a>
+        </li>
+        <li>
+        <a  routerLinkActive="active" (click)="logout()" class="ancorNav"><img src="../../assets/Cerrar sesión.png" alt=""></a>
+        </li>
+      </div>
+      <div>
+      </div>
+    </ul>
+  </div>
+</nav>

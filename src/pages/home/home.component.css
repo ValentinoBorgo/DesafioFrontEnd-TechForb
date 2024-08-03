@@ -1,0 +1,197 @@
+body{
+    margin: 0;
+    position: relative;
+}
+
+.container{
+    margin-left: 130px;
+    padding: 0 2rem;
+}
+
+.generales{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+
+.generales-s{
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* margin-right: 2rem; */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.texto-espacio {
+    margin-right: 60px;
+}
+
+.check{
+    border-radius: 2rem;
+    padding: 0.5rem;
+    background-color: rgb(131, 240, 131);
+}
+
+.exclamación{
+    border-radius: 2rem;
+    padding: 0.5rem;
+    background-color: rgb(239, 250, 84);
+}
+
+.peligro{
+    border-radius: 2rem;
+    padding: 0.5rem;
+    background-color: rgb(252, 56, 56);
+}
+
+.exit{
+    border-radius: 2rem;
+    padding: 0.5rem;
+    background-color: rgb(250, 195, 43);
+}
+
+.panelPaises{
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* margin-left: 1.5rem; */
+    margin-bottom: 3rem;
+    width: 100%;
+}
+
+.panelItems{
+    border-radius: 1rem;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    /* margin-left: 1.5rem; */
+    margin-bottom: 3rem;
+}
+
+.header-panel-paises{
+    display: inline;
+    margin-left: 1rem;
+}
+
+.caracteristicas{
+    display: flex;
+    justify-content: space-around;
+    /* border: 1px black solid; */
+}
+
+.item{
+    margin: 2rem;
+}
+
+hr{
+    color: gray;
+    width: 1283px;
+}
+
+.numeros-cards-ultimas{
+    /* border: 1px black solid; */
+    display: flex;
+}
+
+.item-por-numero{
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.check-item{
+    border-radius: 2rem;
+    padding: 0.5rem;
+    background-color: rgb(131, 240, 131);
+    height: 15px;
+    margin: 5px;
+}
+
+.exclamación-item{
+    border-radius: 2rem;
+    padding: 0.5rem;
+    background-color: rgb(239, 250, 84);
+    height: 15px;
+    margin: 5px;
+}
+
+.peligro-item{
+    border-radius: 2rem;
+    padding: 0.5rem;
+    background-color: rgb(252, 56, 56);
+    height: 15px;
+    margin: 5px;
+}
+
+.default-item{
+    border-radius: 2rem;
+    padding: 0.5rem;
+    background-color: rgb(233, 233, 233);
+}
+
+.presentacion{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .presentacion {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .generales {
+        flex-direction: column;
+    }
+
+    .generales-s {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .generales-s img{
+        display: flex;
+        margin-left: 46rem;
+        margin-top: -3rem;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .texto-espacio {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .panelPaises {
+        width: 100%;
+    }
+
+    .panelItems{
+        display: none;
+    }
+
+    .caracteristicas {
+        flex-direction: column;
+    }
+
+    .item {
+        margin: 1rem 0;
+    }
+
+    .numeros-cards-ultimas {
+        flex-wrap: wrap;
+    }
+
+    .item-por-numero {
+        margin: 0.5rem;
+    }
+}

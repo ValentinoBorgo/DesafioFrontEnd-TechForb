@@ -1,0 +1,13 @@
+@import 'scss/fonts.scss';
+
+html {
+    height: 100%;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    }
+body {
+    margin: 0;
+    background-color: rgb(224, 250, 250); 
+}
