@@ -37,9 +37,9 @@
     width: 350px;
  }
 
- @media (max-width: 1024px) {
+ /* @media (max-width: 1024px) {
   .modal{
    top : -500px;
   }
 
- }
+ } */
