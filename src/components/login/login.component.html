@@ -35,13 +35,13 @@
             <form [formGroup]="loginForm" *ngIf="!spinner">
                 <mat-form-field class="tamañoInputs">
                 <label>Email</label>
-                    <input formControlName="nombre" type="email" id="email" name="email" placeholder="Email" required>
+                    <input formControlName="email" type="email" id="email" name="email" placeholder="Email" required>
                 </mat-form-field>
                 <br>
                 <mat-form-field class="tamañoInputs">
                 <label>Contraseña</label>
-                    <input formControlName="contrasenia" type="password" id="contrasenia" name="contrasenia" placeholder="Contraseña" required>
-                    <button class="shape">
+                    <input formControlName="contrasenia" [type]="verContrasenia === true ? 'text' : 'password'" id="contrasenia" name="contrasenia" placeholder="Contraseña" required>
+                    <button class="shape" (click)="mostrarContrasenia()">
                         <img src="../../assets/Shape.png">
                     </button>
                 </mat-form-field>

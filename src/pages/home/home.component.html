@@ -12,8 +12,11 @@
                 <button style="all: unset; cursor: pointer;">
                     <img src="../../assets/notification.png" style="margin-right: 0.5rem">
                 </button>
-                <img src="../../assets/Juan Rojas.png">
+                <b>{{nombreApellido}}</b>
             </div>
+        </div>
+        <div class="presentacion-mobile">
+            <h2>Resumen de Planta</h2>
         </div>
         <br>
         <section class="generales">
@@ -21,7 +24,7 @@
                     <mat-card-header class="header">
                         <div class="texto-espacio">
                             <div>Lecturas OK</div>
-                            <div><b>1.234</b></div>
+                            <div><b>{{totalizadores.maxLecturas | numberFormat}}</b></div>
                         </div>
                         <img src="https://img.icons8.com/?size=30&id=98955&format=png&color=000000" alt="check"
                         class="check">
@@ -34,7 +37,7 @@
                     <mat-card-header class="header">
                         <div class="texto-espacio">
                             <div>Alertas Medias</div>
-                            <div><b>932</b></div>
+                            <div><b>{{totalizadores.maxAlertasMedias| numberFormat}}</b></div>
                         </div>
                         <img src="https://img.icons8.com/?size=30&id=aewQY5IyYpxb&format=png&color=000000" alt="exclamación"
                         class="exclamación">
@@ -48,7 +51,7 @@
                     <mat-card-header class="header">
                         <div class="texto-espacio">
                             <div>Alertas Rojas</div>
-                            <div><b>1.234</b></div>
+                            <div><b>{{totalizadores.maxAlertasRojas| numberFormat}}</b></div>
                         </div>
                         <img src="https://img.icons8.com/?size=30&id=59782&format=png&color=000000" alt="peligro"
                         class="peligro">
@@ -62,7 +65,7 @@
                     <mat-card-header class="header">
                         <div class="texto-espacio">
                             <div>Sensores Deshabilitados</div>
-                            <div><b>1.234</b></div>
+                            <div><b>{{sensoresDeshabilitados| numberFormat}}</b></div>
                         </div>
                         <img src="https://img.icons8.com/?size=30&id=OpfeY8fFZX2F&format=png&color=000000" alt="exit"
                         class="exit">
@@ -77,55 +80,97 @@
             <mat-card appearance="outlined" class="panelPaises">
                 <mat-card-header>
                     <mat-card-title class="header-panel-paises"><b>Plantas</b></mat-card-title>
-                    <mat-card-subtitle class="header-panel-paises"><button mat-raised-button style="color: black;" ><b>+ Crear Nueva Planta</b></button></mat-card-subtitle>
+                    <mat-card-subtitle class="header-panel-paises"><button mat-raised-button style="color: black;" (click)="modalAdd()"><b>+ Crear Nueva Planta</b></button></mat-card-subtitle>
+                    <div *ngIf="modalAddPlantaHtml === true">
+                        <app-modal-add-planta></app-modal-add-planta>
+                    </div>
+                    <div *ngIf="modalUpdatePlantaHtml === true">
+                        <app-modal-update-planta></app-modal-update-planta>
+                    </div>
+                    <div *ngIf="modalDeletePlantaHtml === true">
+                        <app-modal-delete-planta></app-modal-delete-planta>
+                    </div>
                 </mat-card-header>
                 <br>
-                <section class="caracteristicas">
+                <div class="caracteristicas-titulos">
                     <div class="item">
                         <p>Pais</p>
-                        <div>
-                        Argentina
-                        </div>
                     </div>
                     
                     <div class="item">
                     <p>Nombre Planta</p>
-                    <div>
-                    Juan Moron KM10
-                    </div>
                     </div>
 
                     <div class="item">
                     <p>Lecturas</p>
-                    <div>
-                    300
-                    </div>
                     </div>
 
                     <div class="item">
                     <p>Alertas Medias</p>
-                    <div>
-                    300
-                    </div>
                     </div>
 
                     <div class="item">
                     <p>Alertas Rojas</p>
-                    <div>
-                    300
-                    </div>
                     </div>
 
                     <div class="item">
                     <p>Acciones</p>
+                    </div>
+
+                </div>
+
+                <div class="caracteristicas" *ngFor="let planta of plantas; let i = index">
+                
+                    <div class="item">
+                        <div class="bandera-pais">
+                        <img src={{planta.bandera}} alt="banderas" class="bandera">
+                        {{planta.pais}}
+                        </div>
+                        <div class="nombre-planta-responsivo">
+                            {{planta.nombre}}
+                        </div>
+                    </div>
+                    
+                    <div class="item nombre-planta">
                     <div>
-                    <button style="border-radius: 1rem;">
-                        <img src="https://img.icons8.com/?size=20&id=84119&format=png&color=000000" alt="">
-                    </button>
+                    {{planta.nombre}}
                     </div>
                     </div>
 
-                </section>
+                    <div class="item">
+                    <div>
+                    {{planta.cant_lecturas || 'VACIO'}}
+                    </div>
+                    </div>
+
+                    <div class="item">
+                    <div>
+                    {{planta.alertas_medias || 'VACIO'}}
+                    </div>
+                    </div>
+
+                    <div class="item">
+                    <div>
+                    {{planta.alertas_rojas || 'VACIO'}}
+                    </div>
+                    </div>
+
+                    <div class="item">
+                    <div>
+                    <button style="all: unset; cursor: pointer;" (click)="acciones(i)">
+                        <img src="https://img.icons8.com/?size=20&id=84119&format=png&color=000000" alt="">
+                    </button>
+                    <br>
+                    <br>
+                        <div class="accionesEE-menu" *ngIf="accionesEE === i">
+                            <button mat-raised-button style="color: blue" (click)="editar(planta)">Editar</button>
+                            <button mat-raised-button  style="color: red" (click)="eliminar(planta)">Eliminar</button>
+                        </div>
+                    </div>
+                    </div>
+                    <hr class="hr-responsivo">
+                </div>
+
                 </mat-card>
         </section>
         <br>

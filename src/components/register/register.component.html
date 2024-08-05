@@ -26,7 +26,7 @@
 
 <mat-form-field class="example-full-width">
   <mat-label>Email</mat-label>
-  <input matInput formControlName ="mail" type="email" id="email" name="email" required>
+  <input matInput formControlName ="email" type="email" id="email" name="email" required>
 </mat-form-field>
 
 
@@ -35,13 +35,8 @@
   <input matInput formControlName ="contrasenia" type="password" id="contraseña" name="contrasena" required>
 </mat-form-field>
 
-<mat-form-field class="example-full-width">
-  <mat-label>Fecha Caducidad</mat-label>
-  <input matInput formControlName ="fecha_baja" type="date" id="fechaCaducidad" name="fechaCaducidad" required>
-</mat-form-field>
-
 <div style="margin-top: 2rem;">
-  <button (click)="register()" mat-raised-button style="background-color: green; color: white;">Registrarse</button>
+  <button (click)="registro()" mat-raised-button style="background-color: green; color: white;">Registrarse</button>
 </div>
 <div style="margin-top: 2rem;">
   <button (click)="moveToLogin()" mat-raised-button color="warn">Volver</button>

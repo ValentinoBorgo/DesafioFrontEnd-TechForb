@@ -1,8 +1,9 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, delay, map, tap, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, delay, map, of, tap, throwError } from 'rxjs';
 import { LoginRequest } from './loginRequest';
 import { environment } from 'src/environments/environment';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,24 +16,21 @@ export class LoginserviceService {
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   currentUserData: BehaviorSubject<String> =new BehaviorSubject<String>("");
 
-  constructor(private http:HttpClient) { 
-    this.currentUserLoginOn = new BehaviorSubject<boolean>(sessionStorage.getItem("access_token")!=null);
-    this.currentUserData = new BehaviorSubject<String>(sessionStorage.getItem("access_token") || "");
+  constructor(private http:HttpClient, private cookie:CookieService) { 
+    this.currentUserLoginOn = new BehaviorSubject<boolean>(cookie.get("access_token")!=null);
+    this.currentUserData = new BehaviorSubject<String>(cookie.get("access_token") || "");
   }
 
   login(credentials:LoginRequest):Observable<any>{
-    console.log(credentials);
     const options = { withCredentials: true };
-    //SOLUCIONAR ESTA PARTE DEL CODIGO
-    return this.http.post<any>(environment.urlApi+"users/login?nombre="
-    +credentials.nombre+"&contrasenia="+credentials.contrasenia, options).pipe(
+    return this.http.post<any>(environment.urlApi+"users/login?email="
+    +credentials.email+"&contrasenia="+credentials.contrasenia, options).pipe(
       tap( (userData) => {
-        console.log(userData);
-        sessionStorage.setItem("access_token", userData.access_token);
+        this.cookie.set("access_token", userData.access_token);
+        this.cookie.set("datos", userData.datos);
         this.currentUserData.next(userData.access_token);
         this.currentUserLoginOn.next(true);
       }),
-      //El map tranforma los datos
       map((userData) => userData.access_token),
       catchError(this.handleError),
       delay(2000)
@@ -40,7 +38,7 @@ export class LoginserviceService {
   }
 
   logout():void{
-    sessionStorage.removeItem("token");
+    this.cookie.delete("access_token");
     this.currentUserLoginOn.next(false);
   }
 
@@ -64,6 +62,11 @@ export class LoginserviceService {
 
   getUser():any{
     return this.user;
+  }
+
+  obtenerToken(): Observable<boolean> {
+    const token = !!this.cookie.get("access_token");
+    return of(token);
   }
 
 }

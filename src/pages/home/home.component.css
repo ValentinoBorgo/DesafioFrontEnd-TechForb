@@ -74,14 +74,28 @@ body{
     margin-left: 1rem;
 }
 
-.caracteristicas{
+.caracteristicas {
     display: flex;
-    justify-content: space-around;
-    /* border: 1px black solid; */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2 auto;
+    /* border: 1px green solid; */
 }
 
-.item{
-    margin: 2rem;
+.caracteristicas-titulos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2 auto;
+}
+
+.item {
+    flex: 1;
+    margin: 1rem;
+    text-align: center;
+    /* border: 1px red solid; */
 }
 
 hr{
@@ -136,14 +150,42 @@ hr{
     justify-content: space-between;
 }
 
+.presentacion-mobile, .hr-responsivo, .nombre-planta-responsivo{
+    display: none;
+}
+
+.bandera{
+    width: 30%;
+    vertical-align: middle;
+    padding: 10px;
+    border-radius: 1rem;
+}
+
+.accionesEE-menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
 @media (max-width: 1024px) {
+
     .container {
         padding: 0 1rem;
+        margin-left: 50px;
     }
 
     .presentacion {
         flex-direction: column;
         align-items: center;
+    }
+
+    .presentacion-mobile{
+        display: block;
+    }
+
+    .hr-responsivo{
+        display: block;
+        width: 800px;
     }
 
     .generales {
@@ -157,7 +199,7 @@ hr{
 
     .generales-s img{
         display: flex;
-        margin-left: 46rem;
+        margin-left: 50rem;
         margin-top: -3rem;
     }
 
@@ -175,16 +217,18 @@ hr{
         width: 100%;
     }
 
-    .panelItems{
+    .panelItems, .presentacion, .nombre-planta{
         display: none;
     }
 
     .caracteristicas {
-        flex-direction: column;
+        flex-direction: row;
+        align-items: center;
     }
 
     .item {
-        margin: 1rem 0;
+        margin: 1rem;
+        padding: 2rem;
     }
 
     .numeros-cards-ultimas {
@@ -194,4 +238,26 @@ hr{
     .item-por-numero {
         margin: 0.5rem;
     }
+
+    .caracteristicas-titulos{
+        display: none;
+    }
+
+    .nombre-planta-responsivo{
+        display: flex;
+        margin-top: 1rem;
+        color: gray;
+        /* background-color: red; */
+    }
+
+    .bandera{
+        width: 30%;
+        padding: 10px;
+    }
+    
+    .bandera-pais{
+        display: flex;
+        /* border: 3px green solid; */
+    }
+
 }

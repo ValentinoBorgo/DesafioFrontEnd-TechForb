@@ -17,6 +17,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
+import { ModalAddPlantaComponent } from 'src/components/modales/modalAddPlanta/modal-add-planta/modal-add-planta.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ModalUpdatePlantaComponent } from 'src/components/modales/modalUpdatePlanta/modal-update-planta/modal-update-planta.component';
+import { ModalDeletePlantaComponent } from 'src/components/modales/modalDeletePlanta/modal-delete-planta/modal-delete-planta.component';
+import { NumberFormatPipe } from 'src/pipes/number-format.pipe';
 
 
 @NgModule({
@@ -26,6 +31,10 @@ import {MatIconModule} from '@angular/material/icon';
     NavComponent,
     HomeComponent,
     RegisterComponent,
+    ModalAddPlantaComponent,
+    ModalUpdatePlantaComponent,
+    ModalDeletePlantaComponent,
+    NumberFormatPipe
   ],
   imports: [
     BrowserModule,
@@ -40,7 +49,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatCardModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

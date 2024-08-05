@@ -1,0 +1,48 @@
+<div class="modal">
+
+    <form class="modal_body" [formGroup]="paisesForm">
+
+        <h3><b>Crear nueva planta</b></h3>
+
+        <p>Nombre planta</p>
+        <mat-form-field class="input" appearance="outline">
+            <mat-label>Ingrese nombre</mat-label>
+            <input matInput formControlName ="planta" type="text" id="planta" name="planta" required>
+        </mat-form-field>
+
+        <br>
+        <br>
+
+        <!--<p>Pais</p>
+        <mat-form-field class="example-full-width">
+            <mat-label>Nombre de Usuario</mat-label>
+            <input matInput type="text" id="bandera-pais">
+            <!--<mat-autocomplete>
+            <mat-option>
+            </mat-option>
+            </mat-autocomplete
+        </mat-form-field-->
+
+        <p>País</p>
+        <mat-form-field class="input" appearance="outline">
+            <mat-label>Seleccione país</mat-label>
+            <input matInput type="text" [formControl]="paisesControl"  id="bandera-pais" [matAutocomplete]="auto" required>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onPaisChange($event.option.value)">
+            <mat-option *ngFor="let pais of filtroPaisesAPI | async" [value]="pais">
+                <img src={{pais.flags.png}} alt="bandera" style="width: 15%;">
+                {{ pais.name.common }}
+            </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <br>
+        <br>
+
+        <div class="btns">
+            <button mat-raised-button style="color: rgb(78, 175, 175);" (click)="cancelar()">Cancelar</button>
+            <button mat-raised-button style="background-color: rgb(78, 175, 175);" (click)="postPlanta()">Crear</button>
+        </div>
+
+    </form>
+
+</div>

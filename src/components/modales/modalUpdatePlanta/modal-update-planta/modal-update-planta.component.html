@@ -1,0 +1,71 @@
+<div class="modal">
+
+  <form class="modal_body" [formGroup]="editForm">
+
+    <h3><b>Editar Planta</b></h3>
+
+    <div class="columnas-update">
+
+      <div class="form-row">
+
+        <div class="form-field">
+          <p>Nombre planta</p>
+          <mat-form-field class="input" appearance="outline">
+            <mat-label>Nombre Planta</mat-label>
+            <input matInput formControlName="planta" type="text" id="planta" name="planta">
+          </mat-form-field>
+        </div>
+
+        <div class="form-field">
+          <p>Pais</p>
+          <mat-form-field class="input" appearance="outline">
+            <mat-label>Pais</mat-label>
+            <input matInput formControlName="pais" type="text" id="pais" name="pais">
+          </mat-form-field>
+        </div>
+        
+        <div class="form-field">
+          <p>Cantidad de Lectruas</p>
+          <mat-form-field class="input" appearance="outline">
+            <mat-label>Ingrese</mat-label>
+            <input matInput formControlName="cant_lecturas" type="text" id="cant_lecturas" name="cant_lecturas" (keypress)="validarNumero($event)">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <p>Cantidad de Lecturas</p>
+          <mat-form-field class="input" formControlName="cc" appearance="outline">
+            <mat-label>Ingrese</mat-label>
+            <input matInput type="text" disabled>
+          </mat-form-field>
+        </div>
+
+        <div class="form-field">
+          <p>Alertas Medias</p>
+          <mat-form-field class="input" appearance="outline">
+            <mat-label>Ingrese</mat-label>
+            <input matInput formControlName="alertas_medias" type="text" id="alertas_medias" name="alertas_medias" (keypress)="validarNumero($event)">
+          </mat-form-field>
+        </div>
+
+        <div class="form-field">
+          <p>Alertas Rojas</p>
+          <mat-form-field class="input" appearance="outline">
+            <mat-label>Ingrese</mat-label>
+            <input matInput formControlName="alertas_rojas" type="text" id="alertas_rojas" name="alertas_rojas" (keypress)="validarNumero($event)">
+          </mat-form-field>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="btns">
+
+      <button mat-raised-button style="color: rgb(78, 175, 175);" (click)="cancelar()">Cancelar</button>
+      <button mat-raised-button style="background-color: rgb(78, 175, 175);" (click)="editar()">Editar</button>
+
+    </div>
+  </form>
+</div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { RegisterService } from 'src/services/register/register.service';
-import { registerBody } from 'src/services/register/registerBody';
+import { RegisterService } from 'src/services/registro/register.service';
+import { registerBody } from 'src/services/registro/registerBody';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,32 +17,27 @@ export class RegisterComponent implements OnInit{
   registerForm = this.formBuilder.group({
     nombre:['',Validators.required],
     apellido: ['',Validators.required],
-    mail : ['',Validators.email],
-    contrasenia : ['',Validators.required],
-    fecha_baja: ['',Validators.required],
-    autoridades: <any>[] 
+    email : ['',Validators.email],
+    contrasenia : ['',Validators.minLength(8)],
   })
 
   ngOnInit(): void {
     this.msgError = null;
-   console.log("REGISTRO");
   }
 
   constructor(private router:Router,private formBuilder:FormBuilder, private registerService:RegisterService){}
 
 
-  register(){
-    console.log(this.registerForm.valid);
+  registro(){
     if(this.registerForm.valid){
-      this.registerForm.value.fecha_baja = this.registerForm.value.fecha_baja?.toString();
-      this.registerService.regiser(this.registerForm.value as registerBody).subscribe({
+      this.registerService.registro(this.registerForm.value as registerBody).subscribe({
         error : (error) => {
           this.msgError = false;
           console.log("ERROR EN HTML : "+ error);
         },
         complete : () => {
           this.msgError = true;
-          console.log("EXITOS");
+          alert("Registro efectivo !");
           this.registerForm.reset();
         }
       })

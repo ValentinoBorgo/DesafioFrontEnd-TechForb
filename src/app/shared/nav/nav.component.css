@@ -50,3 +50,40 @@ a:hover{
     transition: 0.3s;
     transform: scale(1.1);
 }
+
+#icon-nav, .vacio, .mobile-header{
+    display: none;
+}
+
+.mobile-menu{
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .nav {
+        width: 100%;
+        height: 150px;
+        position: relative;
+        background-color: rgb(243, 243, 243);
+    }
+
+    #icon-nav, .vacio{
+        display: block;
+    }
+
+    .mobile-header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .ancorNav{
+        display: block;
+    }
+
+    .mobile-menu {
+        display: block;
+      }
+
+}
+

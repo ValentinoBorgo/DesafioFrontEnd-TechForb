@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { LoginRequest } from 'src/services/auth/loginRequest';
 import { LoginserviceService } from 'src/services/auth/loginservice.service';
 
@@ -12,19 +13,21 @@ import { LoginserviceService } from 'src/services/auth/loginservice.service';
 
 export class LoginComponent implements OnInit{
 
-  //HACER UN FAKE LOADING CON UN SPINNER
-
   msgError: boolean = false;
 
   spinner: boolean = false;
 
+  verContrasenia:boolean = false;
+
   loginError:string="";
   loginForm = this.formBuilder.group({
-    nombre:['',Validators.required],
+    email:['',Validators.email],
     contrasenia: ['',Validators.required],
   })
 
-  constructor(private formBuilder:FormBuilder, private router:Router, private loginService: LoginserviceService) { }
+  constructor(private formBuilder:FormBuilder, private router:Router, private loginService: LoginserviceService,
+    private cookie:CookieService
+  ) { }
 
   ngOnInit(): void {
     
@@ -41,24 +44,20 @@ export class LoginComponent implements OnInit{
   }
 
   login(){
-    console.log(this.loginForm);
     if(this.loginForm.valid){
       this.loginError="";
-      this.loginService.setUser(this.loginForm.value.nombre);
+      this.loginService.setUser(this.loginForm.value.email);
       this.spinner = true;
       this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
         next: (userData) => {
           this.progress();
-          console.log(userData);
         },
         error: (errorData) => {
           this.spinner = false;
           this.msgError = true;
-          console.log(errorData);
           this.loginError = errorData;
         },
         complete: () => {
-          console.info("Login Completado");
           this.router.navigateByUrl('/log/dashboard');
           this.loginForm.reset();
         }
@@ -70,12 +69,7 @@ export class LoginComponent implements OnInit{
     }
   }
 
-  get nombre (){
-    return this.loginForm.controls.nombre;
+  mostrarContrasenia(){
+    this.verContrasenia = !this.verContrasenia;
   }
-
-  get contrasenia (){
-    return this.loginForm.controls.contrasenia;
-  }
-
 }
