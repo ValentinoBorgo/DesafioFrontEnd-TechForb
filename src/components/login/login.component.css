@@ -152,7 +152,7 @@ label{
         flex-direction: column;
     }
 
-    .izquierda, .portal-monitoreo, .iniciar, .registrar, .noVerP{
+    .izquierda, .portal-monitoreo, .iniciar, .noVerP{
         display: none;
     }
 
