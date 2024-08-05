@@ -191,4 +191,10 @@ label{
         width: 100%;
     }
 
+    .registrar{
+        display:flex;
+        border-radius: 3rem;
+        width: 100%;
+    }
+
 }
