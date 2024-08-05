@@ -152,7 +152,7 @@ label{
         flex-direction: column;
     }
 
-    .izquierda, .portal-monitoreo, .iniciar, .noVerP{
+    .izquierda, .portal-monitoreo, .iniciar, .registrar, .noVerP{
         display: none;
     }
 
@@ -186,12 +186,6 @@ label{
     }
 
     .ingresar{
-        display:flex;
-        border-radius: 3rem;
-        width: 100%;
-    }
-
-    .registrar{
         display:flex;
         border-radius: 3rem;
         width: 100%;
