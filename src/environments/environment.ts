@@ -1,3 +1,3 @@
 export const environment = {
-    urlApi : 'https://desafiobackend-techforb.onrender.com',
+    urlApi : 'https://desafiobackend-techforb.onrender.com/',
 }
